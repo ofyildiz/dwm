@@ -71,6 +71,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_F9,     spawn,          {.v = fmcmd } },
 	{ MODKEY,                       XK_F10,    spawn,          {.v = monitorcmd } },
 	{ MODKEY,                       XK_F11,    spawn,          {.v = mixercmd } },
+	{ MODKEY,                       XK_F7,     spawn,          SHCMD("brightnessctl set 10%-") },
+	{ MODKEY,                       XK_F8,     spawn,          SHCMD("brightnessctl set +10%") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },

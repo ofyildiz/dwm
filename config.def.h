@@ -59,24 +59,27 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_purple, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "st", NULL };
-static const char *emacscmd[]  = { "emacs", NULL };
 static const char *eclientcmd[]  = { "emacsclient", "-c", NULL };
+static const char *emacscmd[]  = { "emacs", NULL };
 static const char *fmcmd[]  = { "st", "ranger", NULL };
-static const char *monitorcmd[]  = { "st", "htop", NULL };
 static const char *mixercmd[]  = { "st", "alsamixer", NULL };
+static const char *monitorcmd[]  = { "st", "htop", NULL };
+static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_F1,     spawn,          {.v = emacscmd } },
-	{ MODKEY,                       XK_F2,     spawn,          {.v = eclientcmd } },
-	{ MODKEY,                       XK_F9,     spawn,          {.v = fmcmd } },
-	{ MODKEY,                       XK_F10,    spawn,          {.v = monitorcmd } },
-	{ MODKEY,                       XK_F11,    spawn,          {.v = mixercmd } },
-	{ MODKEY,                       XK_F7,     spawn,          SHCMD("brightnessctl set 10%-") },
-	{ MODKEY,                       XK_F8,     spawn,          SHCMD("brightnessctl set +10%") },
+	{ MODKEY,                       XK_F1,     spawn,          SHCMD("amixer -M set Master toggle") },
+	{ MODKEY,                       XK_F2,     spawn,          SHCMD("amixer -M set Master 10%-") },
+	{ MODKEY,                       XK_F3,     spawn,          SHCMD("amixer -M set Master 10%+") },
+	{ MODKEY,                       XK_F5,     spawn,          SHCMD("brightnessctl set 10%-") },
+	{ MODKEY,                       XK_F6,     spawn,          SHCMD("brightnessctl set +10%") },
+	{ MODKEY,                       XK_F9,     spawn,          {.v = monitorcmd } },
+	{ MODKEY,                       XK_F10,    spawn,          {.v = fmcmd } },
+	{ MODKEY,                       XK_F11,    spawn,          {.v = eclientcmd } },
+	{ MODKEY,                       XK_F12,    spawn,          {.v = emacscmd } },
+	{ MODKEY|Shiftmask,             XK_F1,     spawn,          {.v = mixercmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },

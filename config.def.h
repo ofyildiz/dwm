@@ -64,13 +64,12 @@ static const char *emacscmd[]  = { "emacs", NULL };
 static const char *fmcmd[]  = { "st", "ranger", NULL };
 static const char *mixercmd[]  = { "st", "alsamixer", NULL };
 static const char *monitorcmd[]  = { "st", "htop", NULL };
-static const char *pmenucmd[]  = { "passmenu", NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = pmenucmd } },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("passmenu") },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_F1,     spawn,          SHCMD("amixer -M set Master toggle") },
 	{ MODKEY,                       XK_F2,     spawn,          SHCMD("amixer -M set Master 10%-") },

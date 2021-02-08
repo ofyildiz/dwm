@@ -60,12 +60,14 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_purple, "-sf", col_gray4, NULL };
 static const char *browsercmd[]  = { "qutebrowser", NULL };
+static const char *browsffcmd[]  = { "firefox", NULL };
 static const char *eclientcmd[]  = { "emacsclient", "-c", NULL };
 static const char *emacscmd[]  = { "emacs", NULL };
 static const char *fmcmd[]  = { "st", "ranger", NULL };
 static const char *mixercmd[]  = { "st", "alsamixer", NULL };
 static const char *monitorcmd[]  = { "st", "htop", NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char *tickercmd[]  = { "st", "ticker", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -78,12 +80,14 @@ static Key keys[] = {
 	{ MODKEY,                       XK_F4,     spawn,          {.v = mixercmd } },
 	{ MODKEY,                       XK_F5,     spawn,          SHCMD("brightnessctl set 10%-") },
 	{ MODKEY,                       XK_F6,     spawn,          SHCMD("brightnessctl set +10%") },
+	{ MODKEY,                       XK_F7,     spawn,          {.v = tickercmd } },
 	{ MODKEY,                       XK_F8,     spawn,          SHCMD("if [[ $(nmcli radio wifi) == enabled ]]; then nmcli radio wifi off; else nmcli radio wifi on; fi") },
 	{ MODKEY,                       XK_F9,     spawn,          {.v = monitorcmd } },
 	{ MODKEY,                       XK_F10,    spawn,          {.v = fmcmd } },
 	{ MODKEY,                       XK_F11,    spawn,          {.v = eclientcmd } },
 	{ MODKEY|ShiftMask,             XK_F11,    spawn,          {.v = emacscmd } },
 	{ MODKEY,                       XK_F12,    spawn,          {.v = browsercmd } },
+	{ MODKEY|ShiftMask,             XK_F12,    spawn,          {.v = browsffcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
